@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro/Iniciar Sesión</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom right, #6a11cb, #2575fc);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        form {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: 2px solid #333;
+            border-radius: 10px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        button {
+            background: #6a11cb;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .toggle-link {
+            cursor: pointer;
+            color: #6a11cb;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Registro/Iniciar Sesión</h1>
+    <form id="registerForm" action="/register" method="POST">
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Registrarse</button>
+        <p class="toggle-link" onclick="toggleForm()">¿Ya tienes una cuenta? Inicia sesión aquí</p>
+    </form>
+    <form id="loginForm" action="/login" method="POST" style="display: none;">
+        <input type="email" name="email" placeholder="Correo electrónico" required>
+        <input type="password" name="password" placeholder="Contraseña" required>
+        <button type="submit">Iniciar Sesión</button>
+        <p class="toggle-link" onclick="toggleForm()">¿No tienes una cuenta? Regístrate aquí</p>
+    </form>
+
+    <script>
+        function toggleForm() {
+            const registerForm = document.getElementById('registerForm');
+            const loginForm = document.getElementById('loginForm');
+            if (registerForm.style.display === 'none') {
+                registerForm.style.display = 'block';
+                loginForm.style.display = 'none';
+            } else {
+                registerForm.style.display = 'none';
+                loginForm.style.display = 'block';
+            }
+        }
+    </script>
+</body>
+</html>
