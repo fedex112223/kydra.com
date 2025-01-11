@@ -2,10 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const http = require('http');
 const socketio = require('socket.io');
+const cors = require('cors');
+
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
