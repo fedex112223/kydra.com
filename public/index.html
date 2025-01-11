@@ -3,61 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro/Iniciar Sesión</title>
+    <title>Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background: linear-gradient(to bottom right, #6a11cb, #2575fc);
-            color: #333;
-            text-align: center;
-            padding: 50px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
-        form {
-            background: white;
+        .form-container {
+            background: rgba(255, 255, 255, 0.1);
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
+            width: 300px;
+            text-align: center;
         }
         input {
-            margin: 10px 0;
-            padding: 10px;
-            border: 2px solid #333;
-            border-radius: 10px;
             width: 100%;
-            box-sizing: border-box;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 5px;
         }
         button {
-            background: #6a11cb;
-            color: white;
+            width: 100%;
             padding: 10px;
             border: none;
-            border-radius: 10px;
+            border-radius: 5px;
+            background: #2575fc;
+            color: white;
             cursor: pointer;
-            font-size: 16px;
         }
         .toggle-link {
+            color: #2575fc;
             cursor: pointer;
-            color: #6a11cb;
-            text-decoration: underline;
         }
     </style>
 </head>
 <body>
-    <h1>Registro/Iniciar Sesión</h1>
-    <form id="registerForm" action="/register" method="POST">
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Registrarse</button>
-        <p class="toggle-link" onclick="toggleForm()">¿Ya tienes una cuenta? Inicia sesión aquí</p>
-    </form>
-    <form id="loginForm" action="/login" method="POST" style="display: none;">
-        <input type="email" name="email" placeholder="Correo electrónico" required>
-        <input type="password" name="password" placeholder="Contraseña" required>
-        <button type="submit">Iniciar Sesión</button>
-        <p class="toggle-link" onclick="toggleForm()">¿No tienes una cuenta? Regístrate aquí</p>
-    </form>
-
+    <div class="form-container">
+        <form id="registerForm" action="/register" method="POST">
+            <h2>Register</h2>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+            <p class="toggle-link" onclick="toggleForm()">Already have an account? Login here</p>
+        </form>
+        <form id="loginForm" action="/login" method="POST" style="display: none;">
+            <h2>Login</h2>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p class="toggle-link" onclick="toggleForm()">Don't have an account? Register here</p>
+        </form>
+    </div>
     <script>
         function toggleForm() {
             const registerForm = document.getElementById('registerForm');
